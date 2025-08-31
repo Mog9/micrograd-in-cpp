@@ -94,36 +94,22 @@ public:
 };
 
 int main() {
-    // Value* a = new Value(2.0);
-    // Value* b = new Value(-3.0);
-    // Value* c = new Value(10.0);
-    //
-    //
-    // Value* d = Value::add(Value::mul(a,b), c);
-    // d->disp();
-    //
-    // d->backward();
-    //
-    // a->disp();
-    // b->disp();
-    // c->disp();
-    // d->disp();
-    // //actual grad = 0,-3,2,1,1
+    Value* a = new Value(2.0);
+    Value* b = new Value(-3.0);
+    Value* c = new Value(10.0);
 
 
-    Value* a = new Value(3.0);
-    Value* b = new Value(-2.0);
-    Value* c = new Value(4.0);
+    Value* d = Value::add(Value::mul(a,b), c);
+    d->disp();
 
-    Value* d = Value::add(Value::mul(a,b), Value::pow(c, 2));
+    d->backward();
 
-    d->disp();      // forward value
-    d->backward();  // compute grads
+    a->disp();
+    b->disp();
+    c->disp();
+    d->disp();
+    //actual grad = 0,-3,2,1,1
 
-    a->disp();      // grad = -2
-    b->disp();      // grad = 3
-    c->disp();      // grad = 8
-    d->disp();      // grad = 1
 
     delete a; delete b; delete c; delete d;
     return 0;
